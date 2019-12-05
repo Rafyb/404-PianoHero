@@ -1,7 +1,6 @@
 var partie_lancee = 0;
 function touche(event){
     var touche = event.keyCode;
-    var nom = String.fromCharCode(touche);
     if (touche == 32 && partie_lancee == 0) {
         partie_lancee = 1;
         nom = 'Espace';
@@ -9,16 +8,22 @@ function touche(event){
         window.myGame = new Game();
         window.myGame.start();
     }
-    if (touche == 65 && partie_lancee == 1) { // Touche A
-        console.log("A");
-    }
-    if (touche == 90 && partie_lancee == 1) { // Touche Z
-        console.log("Z");
-    }
-    if (touche == 69 && partie_lancee == 1) { // Touche E
-        console.log("E");
-    }
-    if (touche == 82 && partie_lancee == 1) { // Touche R
-        console.log("R");
+    if(partie_lancee == 1){
+        if (touche == 65) { // Touche A
+            console.log("A");
+            window.myGame.active("A");
+        }
+        if (touche == 90) { // Touche Z
+            console.log("Z");
+            window.myGame.active("Z");
+        }
+        if (touche == 69) { // Touche E
+            console.log("E");
+            window.myGame.active("E");
+        }
+        if (touche == 82) { // Touche R
+            console.log("R");
+            window.myGame.active("R");
+        }
     }
 }
