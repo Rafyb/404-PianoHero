@@ -43,8 +43,24 @@ class Game{
     }
 
     interface(){
-        this.canvas.getContext("2d").fillStyle = 'rgba(0,0,0,1)';
-        this.canvas.getContext("2d").fillRect(0, this.canvas.height-20, this.canvas.width,1);
+        const ctx = this.canvas.getContext("2d");
+        ctx.font = "10px Arial";
+        ctx.fillStyle = 'rgba(120,0,0,0.7)';
+        ctx.fillRect(5, this.canvas.height-20,65,10);
+        ctx.fillStyle = '#FFF';
+        ctx.fillText("A", 35, this.canvas.height-11);
+        ctx.fillStyle = 'rgba(0,120,0,0.7)';
+        ctx.fillRect(80, this.canvas.height-20,65,10);
+        ctx.fillStyle = '#FFF';
+        ctx.fillText("Z", 110, this.canvas.height-11);
+        ctx.fillStyle = 'rgba(120,120,0,0.7)';
+        ctx.fillRect(155, this.canvas.height-20,65,10);
+        ctx.fillStyle = '#FFF';
+        ctx.fillText("E", 185, this.canvas.height-11);
+        ctx.fillStyle = 'rgba(0,0,120,0.7)';
+        ctx.fillRect(230, this.canvas.height-20,65,10);
+        ctx.fillStyle = '#FFF';
+        ctx.fillText("R", 260, this.canvas.height-11);
     }
 
 }
