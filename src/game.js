@@ -9,7 +9,7 @@ class Game{
         this.canvas = document.querySelector("#gameCanvas");
         this.speed = 20;
         this.tones = [];
-        this.tailleTones = 30;
+        this.tailleTones = 100;
     }
 
     start(){
@@ -30,7 +30,7 @@ class Game{
                 tone.destroy();
                 this.myGame.generateTones();
             } else {
-                tone.newPosition(tone.y+1);
+                tone.newPosition(tone.y+5);
                 tone.update();
             }
         });
@@ -44,23 +44,23 @@ class Game{
 
     interface(){
         const ctx = this.canvas.getContext("2d");
-        ctx.font = "10px Arial";
+        ctx.font = "20px Arial";
         ctx.fillStyle = 'rgba(120,0,0,0.7)';
-        ctx.fillRect(5, this.canvas.height-20,65,10);
+        ctx.fillRect(5, this.canvas.height-60,90,30);
         ctx.fillStyle = '#FFF';
-        ctx.fillText("A", 35, this.canvas.height-11);
+        ctx.fillText("A", 45, this.canvas.height-38);
         ctx.fillStyle = 'rgba(0,120,0,0.7)';
-        ctx.fillRect(80, this.canvas.height-20,65,10);
+        ctx.fillRect(105, this.canvas.height-60,90,30);
         ctx.fillStyle = '#FFF';
-        ctx.fillText("Z", 110, this.canvas.height-11);
+        ctx.fillText("Z", 145, this.canvas.height-38);
         ctx.fillStyle = 'rgba(120,120,0,0.7)';
-        ctx.fillRect(155, this.canvas.height-20,65,10);
+        ctx.fillRect(205, this.canvas.height-60,90,30);
         ctx.fillStyle = '#FFF';
-        ctx.fillText("E", 185, this.canvas.height-11);
+        ctx.fillText("E", 245, this.canvas.height-38);
         ctx.fillStyle = 'rgba(0,0,120,0.7)';
-        ctx.fillRect(230, this.canvas.height-20,65,10);
+        ctx.fillRect(305, this.canvas.height-60,90,30);
         ctx.fillStyle = '#FFF';
-        ctx.fillText("R", 260, this.canvas.height-11);
+        ctx.fillText("R", 345, this.canvas.height-38);
     }
 
 }

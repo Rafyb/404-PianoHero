@@ -10,7 +10,7 @@ class Tone{
     constructor(gameContext,height,col,debut,color){
         this.gameContext = gameContext;
         this.ctx = gameContext.canvas.getContext("2d");
-        this.width = 75;
+        this.width = 100;
         this.height = height;
         this.y = debut;
         this.x = this.width*col;
