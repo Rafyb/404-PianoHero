@@ -1,16 +1,19 @@
 class Tone{
+    gameContext;
     ctx;
     width;
     height;
     x;
     y;
+    color;
 
-    constructor(gameContext,colonne,color){
+    constructor(gameContext,height,col,debut,color){
+        this.gameContext = gameContext;
         this.ctx = gameContext.canvas.getContext("2d");
-        this.width = 100;
-        this.height = 30;
-        this.y = -(this.height);
-        this.x = 100*colonne;
+        this.width = 75;
+        this.height = height;
+        this.y = debut;
+        this.x = this.width*col;
         this.color = color;
 
         this.update();
@@ -26,6 +29,7 @@ class Tone{
     }
 
     destroy(){
+        this.gameContext.tones.shift();
         this.ctx.clearRect(this.x, this.y, this.width, this.height);
     }
     
