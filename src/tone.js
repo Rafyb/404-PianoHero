@@ -1,11 +1,4 @@
 class Tone{
-    gameContext;
-    ctx;
-    width;
-    height;
-    x;
-    y;
-    color;
 
     constructor(gameContext,height,col,debut,color){
         this.gameContext = gameContext;
@@ -32,9 +25,6 @@ class Tone{
         } else {
             return false;
         }
-        /*if (this.y > bas_y) {
-            window.myGame.lose();
-        }*/
     }
 
     update(){
