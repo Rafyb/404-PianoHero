@@ -1,5 +1,6 @@
 class Tone{
 
+
     constructor(gameContext,height,col,debut,color){
         this.gameContext = gameContext;
         this.ctx = gameContext.canvas.getContext("2d");

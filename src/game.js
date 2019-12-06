@@ -2,11 +2,12 @@ class Game{
     
     constructor(){
         this.canvas = document.querySelector("#gameCanvas");
-        this.speed = 10;
+        this.speed = 5;
         this.tones = [];
         this.tailleTones = 100;
         console.log(this.canvas);
         this.UI = new Interface(this.canvas);
+        this.score = new ScoreBoard(document.querySelector("#scoreCanvas"));
     }
 
     start(){
@@ -16,7 +17,13 @@ class Game{
         for(let i=0; i < 3; i++){
             this.generateTones()
         }
-        this.intervalId = setInterval(this.update, this.speed);
+        this.myAudio = new Audio('./sound/piano.wav');
+        this.myAudio.addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+        this.myAudio.play();
+        this.intervalId = setInterval(this.update, 30);
     }
 
     clear() {
@@ -31,11 +38,15 @@ class Game{
                 this.myGame.clear();
                 this.myGame.lose();
             } else {
-                tone.newPosition(tone.y+5);
+                tone.newPosition(tone.y+this.myGame.speed);
                 tone.update();
             }
         });
         this.myGame.UI.draw();
+        if(this.myGame.score.beforeSpeed == 0){
+            this.myGame.score.beforeSpeed=20;
+            this.myGame.speed++;
+        }
     }
 
     generateTones(){
@@ -45,11 +56,15 @@ class Game{
 
     detectionTone(column) {
         this.tones.forEach(tone => {
-            if (tone.col == column) {
-                if (tone.activate == true) {
+            if (tone.col == column && tone.activate == true) {
                     tone.destroy();
                     this.generateTones();
-                }
+                    this.score.increaseScore();
+                    this.score.update();
+            } else {
+                //this.score.breakCombo();
+                this.score.update();
+
             }
         });
     }
@@ -59,7 +74,8 @@ class Game{
     }
 
     lose() {
-        if (confirm("Vous avez perdu !\n\nRecommencer la partie ?")) {
+        this.myAudio.pause();
+        if (confirm("Vous avez perdu !\n\nVotre score : "+this.score.score+" \n\nRecommencer la partie ?")) {
             window.partie_lancee = 0;
         } else {
             history.back();
