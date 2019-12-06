@@ -6,6 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css">
+    <script type="text/javascript" src="src/scoreBoard.js"></script>
     <script type="text/javascript" src="src/tone.js"></script>
     <script type="text/javascript" src="src/interface.js"></script>
     <script type="text/javascript" src="src/game.js"></script>
@@ -13,12 +14,14 @@
 </head>
 <body onkeydown="touche(event);">
     <section id="texte">
-            <h1>404</h1>
+            <h1>404 - GAME FOUND</h1>
+            <h2>Powered by ATOS®</h2>
         <div class="texte">
             <h2>How to play ?</h2>
         </div>
         <div class="texte">
-            <h2>Highscores</h2>
+            <h2>Score : </h2>
+            <canvas id="scoreCanvas"  width = "300" height = "50"></canvas>
         </div>
     </section>
     <section id="game">
