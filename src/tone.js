@@ -15,7 +15,8 @@ class Tone{
         this.y = debut;
         this.x = this.width*col;
         this.color = color;
-
+        this.col = col;
+        this.activate = false;
         this.update();
     }
 
@@ -23,9 +24,23 @@ class Tone{
         this.y = decal;
     }
 
+    isActivate(){
+        let haut_y = this.gameContext.canvas.height - 60;
+        let bas_y = this.gameContext.canvas.height - 30;
+        if ((this.y + this.height) >= haut_y && this.y <= bas_y) {
+            return true;
+        } else {
+            return false;
+        }
+        /*if (this.y > bas_y) {
+            window.myGame.lose();
+        }*/
+    }
+
     update(){
         this.ctx.fillStyle = this.color;
         this.ctx.fillRect(this.x, this.y, this.width, this.height);
+        this.activate = this.isActivate();
     }
 
     destroy(){

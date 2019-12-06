@@ -21,8 +21,11 @@ class Game{
     }
 
     start(){
-        for(let i =0; i < 6; i++){
+        for(let i =0; i < 4; i++){
             this.tones[i] = new Tone(this,this.tailleTones,i,-(this.tailleTones*(i+1)),'rgba(5,5,5,1)');
+        }
+        for(let i=0; i < 3; i++){
+            this.generateTones()
         }
         let intervalId = setInterval(this.update, this.speed);
     }
@@ -47,7 +50,7 @@ class Game{
 
     generateTones(){
         let col = Math.floor(Math.random() * 4);
-        this.tones.push(new Tone(this,this.tailleTones,col,-this.tailleTones,'rgba(5,5,5,1)'));
+        this.tones.push(new Tone(this,this.tailleTones,col,this.tones[this.tones.length-1].y-this.tailleTones,'rgba(5,5,5,1)'));
     }
 
     interface(){
@@ -99,6 +102,28 @@ class Game{
             setTimeout(function(){
                 window.myGame.R = "false";
             },250);
+        }
+    }
+
+    detectionTone(column) {
+        this.tones.forEach(tone => {
+            if (tone.col == column) {
+                if (tone.activate == true) {
+                    tone.destroy();
+                    this.generateTones();
+                }
+            }
+        });
+    }
+
+    lose() {
+        this.tones.forEach(tone => {
+            tone.destroy();
+        });
+        if (confirm("Vous avez perdu !\n\nRecommencer la partie ?")) {
+            window.partie_lancee = 0;
+        } else {
+            history.back();
         }
     }
 
