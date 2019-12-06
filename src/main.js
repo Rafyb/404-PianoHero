@@ -4,7 +4,6 @@ function touche(event){
     if (touche == 32 && partie_lancee == 0) {
         partie_lancee = 1;
         nom = 'Espace';
-        //alert('Vous avez appuyé sur ' + nom + '\nLe jeu va se lancer');
         window.myGame = new Game();
         window.myGame.start();
     }

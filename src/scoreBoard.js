@@ -16,7 +16,6 @@ class ScoreBoard{
 
     breakCombo(){
         this.combo = 0;
-        console.log("BREAK");
     }
 
     update(){
